@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/mystyle.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/jquery.pagepiling.css">
+<title>{{ title }}</title>
+</head>
+<body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.pagepiling.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('#pagepiling').pagepiling({
+        menu: '#myMenu',
+        anchors: ['page1', 'page2', 'page3','page4','page5'],
+        navigation: {
+          'position': 'right',
+          'tooltips': ['タイトル', 'マッチング', '図鑑', 'シミュレーション', 'お問い合わせ']
+        },
+        scrollingSpeed: 1000,
+        sectionSelector: '.contents'
+      });
+    });
+  </script>
+  </head>
+  <body>
+  <ul id="myMenu">
+      <font size="4">
+      <a href="#page1" style="color:black;text-decoration:none">タイトル　</a>
+      <a href="#page2" style="color:black;text-decoration:none">マッチング　</a>
+      <a href="#page3" style="color:black;text-decoration:none">図鑑　</a>
+      <a href="#page4" style="color:black;text-decoration:none">シュミレーション　</a>
+      <a href="#page5" style="color:black;text-decoration:none">お問い合わせ　</a>
+      </font>
+  </ul>
+   
+  <div id="pagepiling">
+    <div class="contents" id="section1">
+      <!--contents01-->
+      <div class="jumbotron jumbotron-extend jumbotron-titleImage">
+            <div class="container-fluid jumbotron-container">
+                <h1>BONSAI MASTER</h1>
+                <h2>盆栽始めて見ませんか？</h2>
+            </div>
+        </div>
+    </div>
+    <div class="contents backWhite" id="section2">
+      <!--contents02-->
+      <center><h1>盆栽マッチングシステム</h1></center>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend">
+                        <div class="container-fluid jumbotron-container">
+                            <h3>ここに説明文</h3>
+                            <p><a class="btn btn-primary btn-lg" href="/matching" role="button">Lets Go</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contents backWhite" id="section3">
+      <!--contents03-->
+      <center><h1>盆栽図鑑</h1></center>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend">
+                        <div class="container-fluid jumbotron-container">
+                            <h3>ここに説明文</h3>
+                            <p><a class="btn btn-primary btn-lg" href="/bonsaibook" role="button">Lets Go</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contents backWhite" id="section4">
+      <!--contents04-->
+      <center><h1>盆栽シュミレーション</h1></center>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend">
+                        <div class="container-fluid jumbotron-container">
+                            <h3>ここに説明文</h3>
+                            <p><a class="btn btn-primary btn-lg" href="/simulation" role="button">Lets Go</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contents backWhite" id="section5">
+        <!--contents05-->
+        <center><h1>お問い合わせ</h1></center>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="jumbotron jumbotron-extend">
+                        <div class="container-fluid jumbotron-container">
+                            <h3>ここに説明文</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+  </body>
+</body>
+</html>
