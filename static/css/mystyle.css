@@ -1,0 +1,29 @@
+p.content1 {line-height: 100px;}
+.jumbotron-extend {
+    position: relative;
+    height: 100vh;
+    min-height: 300px;
+}
+.jumbotron-titleImage {
+    background: url("../images/titleBack.jpg") no-repeat center center;
+    background-size: cover;
+}
+.jumbotron-container {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+.backWhite {
+    background-color: white;
+}
+#myMenu{
+    position: fixed;
+    z-index: 9999;
+  }
+.tmpImage {
+    position: relative;
+    height: 80vh;
+    min-height: 300px;
+    background: url("../images/tmp.jpg") no-repeat center center;
+    background-size: cover;
+}
