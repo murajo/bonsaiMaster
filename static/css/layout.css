@@ -1,0 +1,22 @@
+.header {
+    color:white;
+    background-color:#5EC86D;
+}
+.contents-side {
+    background-color: #F0F3F3;
+}
+a {
+    color:white;
+    text-decoration: none !important;
+}
+.left {
+    font-size: 200%;
+    float: left;
+}
+.link-bar {
+    font-size: 130%;
+    text-align: right;
+}
+.back-white {
+    background-color: white;
+}
