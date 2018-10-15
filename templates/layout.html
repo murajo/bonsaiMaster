@@ -3,30 +3,31 @@
 <head>
     <meta charset="utf-8"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/layout.css" type="text/css">
 <title>{{ title }}</title>
 </head>
 <body>
     <div class="container-fluid header">
-            <div class="row">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-7"><br>
-                    <p class="left"><a href="/">盆栽マスター</a></p>
-                    <p class=link-bar>
-                        <a href="/">ホーム</a>
-                        <a href="/matching">　マッチング</a>
-                        <a href="/bonsaibook">　図鑑</a>
-                        <a href="/simulation">　シュミレーション</a>
-                        <a href="/simulation">　お問い合わせ</a>
-                    </p>
-                </div>
-                <div class="col-xs-3"></div>
-                </div>
-                </div>
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8"><br>
+                <p class="left"><a href="/">盆栽マスター</a></p><br>
+                <p class=link-bar>
+                    <a href="/">ホーム</a>
+                    <a href="/matching">　マッチング</a>
+                    <a href="/bonsaibook">　図鑑</a>
+                    <a href="/simulation">　シュミレーション</a>
+                    <a href="/simulation">　お問い合わせ</a>
+                </p>
+            </div>
+            <div class="col-xs-2"></div>
+        </div>
+    </div>
 <div class="container-fluid contents-side">
     <div class="row">
         <div class="col-xs-2"></div>
-        <div class="col-xs-7 back-white">
+        <div class="col-xs-8 back-white">
                 <center>
 {% block content %}
 <!-- ここにメインコンテンツを書く -->
@@ -34,7 +35,7 @@
                     <div style="text-align : right"><p>フッター部分</p></div>
                 </center>
         </div>
-        <div class="col-xs-3"></div>
+        <div class="col-xs-2"></div>
     </div>
 </div>
 <script src="../static/js/bootstrap.min.js"></script>
