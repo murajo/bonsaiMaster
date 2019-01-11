@@ -2,7 +2,90 @@
 {% block content %}
 <h2>盆栽図鑑</h2>
 <form method="get" action="#" class="search_container">
-        <input type="text" size="25" placeholder="　キーワード検索">
-        <input type="submit" value="&#xf002">
-      </form>
+    <input type="text" size="25" placeholder="　キーワード検索">
+    <input type="submit" value="&#xf002">
+</form>
+<div class="hidden_box">
+    <label for="label1">詳細検索</label>
+    <input type="checkbox" id="label1" class="hidden">
+    <div class="hidden_show">
+        <!--非表示ここから-->
+        <form method="get" action="#" class="">
+            <div class="container-fluid">
+                <div class="row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-5">
+                    <h3>種別</h3>
+                    <div class="radio-button btn-group btn-group-toggle">
+                        <input type="radio" name="kind" id="kind1" autocomplete="off" class="hidden">
+                        <label for="kind1" class="btn btn-secondary">花物</label>
+                        <input type="radio" name="kind" id="kind2" autocomplete="off" class="hidden">
+                        <label for="kind2" class="btn btn-secondary">草物</label>
+                        <input type="radio" name="kind" id="kind3" autocomplete="off" class="hidden">
+                        <label for="kind3" class="btn btn-secondary">実物</label>
+                        <input type="radio" name="kind" id="kind4" autocomplete="off" checked class="hidden">
+                        <label for="kind4" class="btn btn-secondary">指定なし</label>
+                    </div><br>
+                    <h3>育成難易度</h3>
+                    <div class="radio-button btn-group btn-group-toggle">
+                        <input type="radio" name="difficulty" id="difficulty1" autocomplete="off" class="hidden">
+                        <label for="difficulty1" class="btn btn-secondary">優しい</label>
+                        <input type="radio" name="difficulty" id="difficulty2" autocomplete="off" class="hidden">
+                        <label for="difficulty2" class="btn btn-secondary">普通</label>
+                        <input type="radio" name="difficulty" id="difficulty3" autocomplete="off" class="hidden">
+                        <label for="difficulty3" class="btn btn-secondary">難しい</label>
+                        <input type="radio" name="difficulty" id="difficulty4" autocomplete="off" checked class="hidden">
+                        <label for="difficulty4" class="btn btn-secondary">指定なし</label>
+                    </div><br>
+                </div>
+                <div class="col-xs-5">
+                    <h3>サイズ</h3>
+                    <div class="radio-button btn-group btn-group-toggle">
+                        <input type="radio" name="size" id="size1" autocomplete="off" class="hidden">
+                        <label for="size1" class="btn btn-secondary">小</label>
+                        <input type="radio" name="size" id="size2" autocomplete="off" class="hidden">
+                        <label for="size2" class="btn btn-secondary">中</label>
+                        <input type="radio" name="size" id="size3" autocomplete="off" class="hidden">
+                        <label for="size3" class="btn btn-secondary">大</label>
+                        <input type="radio" name="size" id="size4" autocomplete="off" checked class="hidden">
+                        <label for="size4" class="btn btn-secondary">指定なし</label>
+                    </div><br>
+                    <h3>価格帯</h3>
+                    <input type="number" name="underprice"  min="0" style="width:90px;">
+                    〜
+                    <input type="number" name="overprice"  min="0" style="width:90px;">
+                </div>
+                <div class="col-xs-1">
+                </div>
+                </div>
+            </div>
+            <br>
+            <input type="submit" class="cp_btn" value="検索">
+        </form>
+        <!--ここまで-->
+    </div>
+</div>
+<div class="container-fluid">
+    {% for n in range(2) %}
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6 book-border">
+            <h3>{{name[n]}}</h3>
+        </div>
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <p style="text-align: right"><img src="../static/images/db/{{n + 1}}.jpg" width="250px" height="300px"></p>
+        </div>
+        <div class="col-xs-4">
+            <p style="text-align: left; font-size: 15pt">
+                hogehoge<br>
+                hogehoge
+            </p>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+<hr width="50"/>
 {% endblock %}
