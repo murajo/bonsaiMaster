@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+{{bonsai_list}}
 <h2>盆栽図鑑</h2>
 <form method="get" action="#" class="search_container">
     <input type="text" size="25" placeholder="　キーワード検索">
@@ -10,7 +11,7 @@
     <input type="checkbox" id="label1" class="hidden">
     <div class="hidden_show">
         <!--非表示ここから-->
-        <form method="get" action="#" class="">
+        <form method="post" action="/bonsaibook" class="">
             <div class="container-fluid">
                 <div class="row">
                 <div class="col-xs-1"></div>
@@ -66,15 +67,19 @@
     </div>
 </div>
 <div class="container-fluid">
-    {% for n in range(2) %}
+    {% for n in range(bonsai_count) %}
+    {% if n%4 == 0%}
+ <!--    {{bonsai_list[n]}} -->
+    <br>
+    {% endif %}
+    {% if n%4 == 0%}
     <div class="row">
         <div class="col-xs-3"></div>
         <div class="col-xs-6 book-border">
-            <h3>{{name[n]}}</h3>
         </div>
         <div class="col-xs-3"></div>
-        <div class="col-xs-6">
-            <p style="text-align: right"><img src="../static/images/db/{{n + 1}}.jpg" width="250px" height="300px"></p>
+        <!-- <div class="col-xs-6">
+            <p style="text-align: right"><img src="../static/images/db/{{n + 1}}.jpg" width="100px" height="100px"></p>
         </div>
         <div class="col-xs-4">
             <p style="text-align: left; font-size: 15pt">
@@ -82,9 +87,24 @@
                 hogehoge
             </p>
         </div>
-        <div class="col-xs-2"></div>
+        <div class="col-xs-2"></div> -->
     </div>
     <br>
+    <div class="row">
+    
+    {% endif %}
+    <div class="col-xs-3">
+        <div class="box">
+        <a data-target="modal1" class="modal-open">
+            <p style="text-align: center"><img src="../static/images/db/{{bonsai_list[n][11]}}.jpg" width="150px" height="150px"></p>
+            {{bonsai_list[n][1]}}
+        </a>
+        </div>
+    </div>
+   
+    {% if n%4 == 3%}
+    </div>
+    {% endif %}
     {% endfor %}
 </div>
 <hr width="50"/>
