@@ -54,4 +54,77 @@ a {
     top: -8px;
     right: -15px;
   }
-  
+
+
+  /*絞り込みボックス*/
+.hidden_box {
+    margin: 1em 0;/*前後の余白*/
+    padding: 0;
+}
+
+/*ボタンホバー時*/
+.hidden_box label:hover {
+    background: #efefef;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input.hidden {
+    display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+    /* padding: 10px 0; */
+    height: auto;
+    opacity: 1;
+}
+.radio-button input[type="radio"]:checked + label {
+    background-color: #2EFE9A;
+    border-color: #2EFE9A;
+    color: black;
+  }
+.radio-button {
+    background-color: #F2F5A9;
+}
+
+.cp_btn {
+    position: relative;
+    display: block;
+    width: 160px;
+    padding: 0.8em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: #5EC86D;
+    border:1px solid #fff;
+    overflow: hidden;
+}
+
+.cp_btn:before {
+    content:"";
+    position: absolute;
+    top: 0px;
+    left: -150px;
+    height: 100%;
+    width: 160px;
+    background : #fff;
+    opacity: 0.3;
+    transition: .4s;
+}
+.cp_btn:hover:before {
+    left:0;
+}
+
+.book-border {
+    border-top: 3px solid #5EC86D;
+ }
+

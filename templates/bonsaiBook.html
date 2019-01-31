@@ -1,11 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
-{{bonsai_list}}
+<!-- {{bonsai_list}} -->
 <h2>盆栽図鑑</h2>
 <form method="get" action="#" class="search_container">
     <input type="text" size="25" placeholder="　キーワード検索">
     <input type="submit" value="&#xf002">
 </form>
+<a href="#modal" class="modal">Show</a>
+<div id="modal" style="display:none;">
+    <p>これはサンプルです。</p>
+</div>
 <div class="hidden_box">
     <label for="label1">詳細検索</label>
     <input type="checkbox" id="label1" class="hidden">
@@ -18,37 +22,37 @@
                 <div class="col-xs-5">
                     <h3>種別</h3>
                     <div class="radio-button btn-group btn-group-toggle">
-                        <input type="radio" name="kind" id="kind1" autocomplete="off" class="hidden">
+                        <input type="radio" name="kind" id="kind1" autocomplete="off" class="hidden" value="花物">
                         <label for="kind1" class="btn btn-secondary">花物</label>
-                        <input type="radio" name="kind" id="kind2" autocomplete="off" class="hidden">
+                        <input type="radio" name="kind" id="kind2" autocomplete="off" class="hidden" value="草物">
                         <label for="kind2" class="btn btn-secondary">草物</label>
-                        <input type="radio" name="kind" id="kind3" autocomplete="off" class="hidden">
+                        <input type="radio" name="kind" id="kind3" autocomplete="off" class="hidden" value="実物">
                         <label for="kind3" class="btn btn-secondary">実物</label>
-                        <input type="radio" name="kind" id="kind4" autocomplete="off" checked class="hidden">
+                        <input type="radio" name="kind" id="kind4" autocomplete="off" checked class="hidden" value="指定なし">
                         <label for="kind4" class="btn btn-secondary">指定なし</label>
                     </div><br>
                     <h3>育成難易度</h3>
                     <div class="radio-button btn-group btn-group-toggle">
-                        <input type="radio" name="difficulty" id="difficulty1" autocomplete="off" class="hidden">
+                        <input type="radio" name="difficulty" id="difficulty1" autocomplete="off" class="hidden" value="優しい">
                         <label for="difficulty1" class="btn btn-secondary">優しい</label>
-                        <input type="radio" name="difficulty" id="difficulty2" autocomplete="off" class="hidden">
+                        <input type="radio" name="difficulty" id="difficulty2" autocomplete="off" class="hidden" value="普通">
                         <label for="difficulty2" class="btn btn-secondary">普通</label>
-                        <input type="radio" name="difficulty" id="difficulty3" autocomplete="off" class="hidden">
+                        <input type="radio" name="difficulty" id="difficulty3" autocomplete="off" class="hidden" value="難しい">
                         <label for="difficulty3" class="btn btn-secondary">難しい</label>
-                        <input type="radio" name="difficulty" id="difficulty4" autocomplete="off" checked class="hidden">
+                        <input type="radio" name="difficulty" id="difficulty4" autocomplete="off" checked class="hidden" value="指定なし">
                         <label for="difficulty4" class="btn btn-secondary">指定なし</label>
                     </div><br>
                 </div>
                 <div class="col-xs-5">
                     <h3>サイズ</h3>
                     <div class="radio-button btn-group btn-group-toggle">
-                        <input type="radio" name="size" id="size1" autocomplete="off" class="hidden">
+                        <input type="radio" name="size" id="size1" autocomplete="off" class="hidden" value="小">
                         <label for="size1" class="btn btn-secondary">小</label>
-                        <input type="radio" name="size" id="size2" autocomplete="off" class="hidden">
+                        <input type="radio" name="size" id="size2" autocomplete="off" class="hidden" value="中">
                         <label for="size2" class="btn btn-secondary">中</label>
-                        <input type="radio" name="size" id="size3" autocomplete="off" class="hidden">
+                        <input type="radio" name="size" id="size3" autocomplete="off" class="hidden" value="大">
                         <label for="size3" class="btn btn-secondary">大</label>
-                        <input type="radio" name="size" id="size4" autocomplete="off" checked class="hidden">
+                        <input type="radio" name="size" id="size4" autocomplete="off" checked class="hidden" value="指定なし">
                         <label for="size4" class="btn btn-secondary">指定なし</label>
                     </div><br>
                     <h3>価格帯</h3>
@@ -91,21 +95,56 @@
     </div>
     <br>
     <div class="row">
-    
+
     {% endif %}
-    <div class="col-xs-3">
-        <div class="box">
-        <a data-target="modal1" class="modal-open">
-            <p style="text-align: center"><img src="../static/images/db/{{bonsai_list[n][11]}}.jpg" width="150px" height="150px"></p>
-            {{bonsai_list[n][1]}}
-        </a>
+    <div class="col-xs-3" data-toggle="modal" data-target="#bonsai-modal{{n}}">
+        <p style="text-align: center"><img src="../static/images/db/{{bonsai_list[n][11]}}.jpg" width="150px" height="150px"></p>
+        <h4>{{bonsai_list[n][1]}}</h4>
+    </div>
+
+    <div class="modal" id="bonsai-modal{{n}}" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+
+        <!-- 3.モーダルのコンテンツ -->
+        <div class="modal-content">
+            <!-- 4.モーダルのヘッダ -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="modal-label"><b>{{bonsai_list[n][1]}}</b></h2>
+
+                <h4>
+                <b>{{bonsai_list[n][2]}}科</b>
+                <b>{{bonsai_list[n][3]}}属</b>
+                </h4>
+            </div>
+            <!-- 5.モーダルのボディ -->
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-6"><img src="../static/images/db/{{bonsai_list[n][11]}}.jpg" width="400px" height="400px"></div>
+                        <div class="col-xs-6 book-border" align="left">       
+                            <p><font size="3"><b>育成難易度</b>：{{bonsai_list[n][5]}}</font></p>
+                            <p><font size="3"><b>季節</b>：{{bonsai_list[n][10]}}</font></p>
+                            <p><font size="3"><b>剪定方法</b>：<br>{{bonsai_list[n][6]}}</font></p>
+                            <p><font size="3"><b>水やり</b>：<br>{{bonsai_list[n][7]}}</font></p>
+                            <p><font size="3"><b>植え替えの時期</b>：<br>{{bonsai_list[n][6]}}</font></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 6.モーダルのフッタ -->
+   <!--          <div class="modal-footer">
+                test
+            </div> -->
         </div>
     </div>
-   
+</div>
     {% if n%4 == 3%}
     </div>
     {% endif %}
     {% endfor %}
-</div>
-<hr width="50"/>
+<script>
+</script>
 {% endblock %}

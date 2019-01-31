@@ -1,49 +1,41 @@
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, json, jsonify
 import dbtool
-import jsontool
+import matching
 import sqlite3
+import json
  
 app = Flask(__name__)
  
 @app.route('/')
 def homeView():
-    name='test'
-    return render_template('home.html', name=name)
+    return render_template('home.html', title='盆栽マスター')
     
 @app.route('/matching')
 def matchingView():
-	test = jsontool.matchingLoad()
-	return render_template('matching.html', debug = test)
+	return render_template('matching.html', title='盆栽マッチング')
+
+
+
+@app.route('/matching_post', methods=['POST'])
+def matchingProcess():
+	print(request.json)
+	rootLog = request.json['rootLog']
+	question_id = matching.matchingRoot(rootLog)
+	question = dbtool.questionGet(question_id)
+	choice = dbtool.choiceGet(question_id)
+	print(question[0][1])
+	return_data = {"rootLog": rootLog, "question_text": question[0][1], "choice_list": choice, "choice_count": len(choice)}
+	return jsonify(ResultSet=json.dumps(return_data))
 
 @app.route('/bonsaibook', methods=['GET','POST'])
 def bonsaibookView():
-	con = sqlite3.connect('bonsai.sqlite3')
-	sql = createSql()
-	cur = con.cursor()
-	cur.execute(sql)
-	# for row in cur.fetchall():
-	# 	print(row)
-	# for row in cur:
-	# 	print(row[0], row[1])
-	bonsai_data_list = cur.fetchall()
-	print(bonsai_data_list[0][5])
-	con.close()
-		# print(request.form['action'])
+	bonsai_data_list = dbtool.bonsaiBookGet()
 	return render_template('bonsaiBook.html', title="盆栽図鑑", bonsai_list = bonsai_data_list, bonsai_count = len(bonsai_data_list))
-	# if request.method == 'GET':
-	# 	print(request.args.get('kind'))
-	# 	return render_template('bonsaiBook.html', title="盆栽図鑑", name=["黒松","真柏"])
-	# else:
-	# 	print("test")
-	# 	return render_template('bonsaiBook.html', title="盆栽図鑑", name=["黒松","真柏"])
 
-def createSql():
-    sql = "SELECT * FROM bonsai"
-    return sql
 
 @app.route('/simulation')
 def simulationView():
-    return render_template('simulation.html')
+    return render_template('simulation.html', title='盆栽シュミレーション')
 
 @app.route('/postTest', methods=['GET','POST'])
 def hello():
