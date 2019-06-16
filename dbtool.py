@@ -1,9 +1,9 @@
 import sqlite3
  
-def bonsaiBookGet():
+def bonsaiBookGet(where=""):
 	table_name = 'bonsai'
 	con = sqlite3.connect('bonsai.sqlite3')
-	sql = createSql(table_name)
+	sql = createSql(table_name, where)
 	cur = con.cursor()
 	cur.execute(sql)
 	bonsai_data_list = cur.fetchall()

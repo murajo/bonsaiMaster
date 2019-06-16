@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/home.css" type="text/css">
     <link rel="stylesheet" href="../static/css/jquery.pagepiling.css">
 <title>{{ title }}</title>
@@ -26,7 +27,7 @@
   </script>
   </head>
   <body>
-  <ul id="myMenu">
+<!--   <ul id="myMenu">
       <font size="4">
       <a href="#page1" style="color:black;text-decoration:none">タイトル　</a>
       <a href="#page2" style="color:black;text-decoration:none">マッチング　</a>
@@ -34,31 +35,31 @@
       <a href="#page4" style="color:black;text-decoration:none">シュミレーション　</a>
       <a href="#page5" style="color:black;text-decoration:none">お問い合わせ　</a>
       </font>
-  </ul>
+  </ul> -->
    
   <div id="pagepiling">
     <div class="contents" id="section1">
       <!--contents01-->
       <div class="jumbotron jumbotron-extend jumbotron-titleImage">
             <div class="container-fluid jumbotron-container">
-                <h1>BONSAI MASTER</h1>
-                <h2>盆栽始めて見ませんか？</h2>
+                <h1 class="wf-hannari">BONSAI MASTER</h1>
+                <h2 class="wf-hannari">盆栽始めて見ませんか？</h2>
             </div>
         </div>
     </div>
     <div class="contents backWhite" id="section2">
       <!--contents02-->
-      <center><h1>盆栽マッチングシステム</h1></center>
+      <center><h1 class="wf-hannari">盆栽マッチングシステム</h1></center>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                    <div class="jumbotron jumbotron-extend matchingImage"></div>
                 </div>
                 <div class="col-xs-6">
                     <div class="jumbotron jumbotron-extend">
                         <div class="container-fluid jumbotron-container">
-                            <font size="10">あなたに合った盆栽を！</font>
-                            <p>簡単な質問に答えてあなたに合った盆栽を見つけよう</p>
+                            <font size="6" class="wf-hannari">あなたに合った盆栽を！</font>
+                            <p class="wf-hannari">簡単な質問に答えてあなたに合った盆栽を見つけよう</p>
                             <p><a class="btn btn-primary btn-lg" href="/matching" role="button">Lets Go</a></p>
                         </div>
                     </div>
@@ -68,16 +69,18 @@
     </div>
     <div class="contents backWhite" id="section3">
       <!--contents03-->
-      <center><h1>盆栽図鑑</h1></center>
+      <center><h1 class="wf-hannari">盆栽図鑑</h1></center>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                    <div class="jumbotron jumbotron-extend bookImage"></div>
                 </div>
                 <div class="col-xs-6">
                     <div class="jumbotron jumbotron-extend">
                         <div class="container-fluid jumbotron-container">
-                            <h3>ここに説明文</h3>
+                            <font size="6" class="wf-hannari">おすすめの育成方法や難易度<br>
+                            まで欲しい情報が満載！</font>
+                            <p>盆栽それぞれの剪定方法や水やりの仕方などの情報をご用意しております</p>
                             <p><a class="btn btn-primary btn-lg" href="/bonsaibook" role="button">Lets Go</a></p>
                         </div>
                     </div>
@@ -87,16 +90,17 @@
     </div>
     <div class="contents backWhite" id="section4">
       <!--contents04-->
-      <center><h1>盆栽シュミレーション</h1></center>
+      <center><h1 class="wf-hannari">盆栽シュミレーション</h1></center>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                    <div class="jumbotron jumbotron-extend simulationImage"></div>
                 </div>
                 <div class="col-xs-6">
                     <div class="jumbotron jumbotron-extend">
                         <div class="container-fluid jumbotron-container">
-                            <h3>ここに説明文</h3>
+                            <font size="6" class="wf-hannari">これで君も盆栽マスターだ</font>
+                            <p>盆栽の育成シュミレーションを使って実際の盆栽の育て方を学んでいこう</p>
                             <p><a class="btn btn-primary btn-lg" href="/simulation" role="button">Lets Go</a></p>
                         </div>
                     </div>
@@ -106,16 +110,17 @@
     </div>
     <div class="contents backWhite" id="section5">
         <!--contents05-->
-        <center><h1>お問い合わせ</h1></center>
+        <center><h1 class="wf-hannari">お問い合わせ</h1></center>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="jumbotron jumbotron-extend tmpImage"></div>
+                    <div class="jumbotron jumbotron-extend requestImage"></div>
                 </div>
                 <div class="col-xs-6">
                     <div class="jumbotron jumbotron-extend">
                         <div class="container-fluid jumbotron-container">
-                            <h3>ここに説明文</h3>
+                            <font size="6"class="wf-hannari">お悩み解決します</font>
+                            <p>サイトに関することや盆栽に関するお悩みなどなんでもご相談ください</p>
                         </div>
                     </div>
                 </div>

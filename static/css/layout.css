@@ -128,3 +128,46 @@ a {
     border-top: 3px solid #5EC86D;
  }
 
+div.matchingBox {
+width:700px; height:500px;
+margin:5px; padding:10px; border:1px solid black;
+background-color:#A9F5BC;
+display: table-cell;
+vertical-align: middle;
+}
+
+.square_btn{
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    transition: .4s;
+}
+
+.square_btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+.custom-radio{
+    margin-left:50px;
+}
+.custom-radio label {
+    font-size: 30px;
+    color: #000;
+}
+.custom-radio label:hover
+{
+    font-size: 33px;
+    color: #FAAC58;
+}
+.custom-radio input[type="radio"]:checked + label {
+    color: #FAAC58;
+    border: 1px solid #FF0000;
+}
+.matching_title{
+    font-size: 30px;
+    margin-bottom:70px;
+}

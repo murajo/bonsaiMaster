@@ -26,3 +26,33 @@
     background: url("../images/tmp.jpg") no-repeat center center;
     background-size: cover;
 }
+.matchingImage {
+    position: relative;
+    height: 80vh;
+    min-height: 300px;
+    background: url("../images/マッチング.jpg") no-repeat center center;
+    background-size: cover;
+}
+.requestImage {
+    position: relative;
+    height: 80vh;
+    min-height: 300px;
+    background: url("../images/お問い合わせ.jpg") no-repeat center center;
+    background-size: cover;
+}
+.bookImage {
+    position: relative;
+    height: 80vh;
+    min-height: 300px;
+    background: url("../images/図鑑.jpg") no-repeat center center;
+    background-size: cover;
+}
+.simulationImage {
+    position: relative;
+    height: 80vh;
+    min-height: 300px;
+    background: url("../images/シュミレーション.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.wf-hannari { font-family: "M PLUS Rounded 1c"; }

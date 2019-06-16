@@ -2,9 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/layout.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <title>{{ title }}</title>
 </head>
 <body>
@@ -18,7 +21,7 @@
                     <a href="/matching">　マッチング</a>
                     <a href="/bonsaibook">　図鑑</a>
                     <a href="/simulation">　シュミレーション</a>
-                    <a href="/simulation">　お問い合わせ</a>
+                    <a href="/request">　お問い合わせ</a>
                 </p>
             </div>
             <div class="col-xs-2"></div>
@@ -32,13 +35,11 @@
 {% block content %}
 <!-- ここにメインコンテンツを書く -->
 {% endblock %}
-                    <div style="text-align : right"><p>フッター部分</p></div>
+<!--                     <div style="text-align : right"><p>フッター部分</p></div> -->
                 </center>
         </div>
         <div class="col-xs-2"></div>
     </div>
 </div>
-<script src="../static/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
 </html>

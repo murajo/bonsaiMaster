@@ -1,4 +1,113 @@
 {% extends "layout.html" %}
 {% block content %}
-test
+<b><h1>盆栽マッチング</h1></b>
+<h3>あなたに合った盆栽を見つけよう!!</h3>
+<div class="matchingBox" id="matchingBox">
+	<button class="square_btn" id="start"value="tet"><b><h2>マッチングスタート!!</h2></b></button>
+</div>
+         <input type="hidden" class="form-control" id="rootLog" value=''>
+         <input type="hidden" class="form-control" id="choice-count" value=''>
+<script>
+
+$(window).load(init());
+function init() {
+  $("#button").click(function() {
+    var rootLog = $("#rootLog").val();
+    var choiceCount = $("#choice-count").val();
+    console.log(choiceCount);
+    questionTitleAdd("tete")
+    //inputRemove();
+    requestPython(rootLog, choiceCount);
+    return false;
+  });
+  $("#start").click(function() {
+    var rootLog = $("#rootLog").val();
+    requestPython(rootLog);
+    return false;
+  });
+  $("#choice1").click(function() {
+    var rootLog = $("#rootLog").val();
+    var choiceCount = $("#choice_count").val();
+    inputAdd();
+    requestPython(rootLog, choiceCount);
+    return false;
+  });
+}
+function requestPython(rootLog="", choice_id=""){
+	var requestData = JSON.stringify(
+    	{"rootLog":rootLog,
+    	"choice_id":choice_id});
+    $.ajax({
+      type:'POST',
+      url:'/matching_post',
+      data:requestData,
+      contentType:'application/json',
+      success:function(data) {
+        inputRemove();
+        var result = JSON.parse(data.ResultSet).result;
+        console.log(result);
+        if(result == ''){
+        	var question_text = JSON.parse(data.ResultSet).question_text;
+	        var choice_list = JSON.parse(data.ResultSet).choice_list;
+	        var choice_count = JSON.parse(data.ResultSet).choice_count;
+	        var rootLog = JSON.parse(data.ResultSet).rootLog;
+	        questionTitleAdd(question_text);
+	        createChoice(choice_list, choice_count);
+	        $('#rootLog').val(rootLog);
+	        console.log("hogehoge")
+        }else{
+        	console.log(result);
+        	createResult(result);
+        }
+      }
+    });
+}
+function inputAdd(choice_list, choiceCount=0){
+	for(var i = 0; i < choiceCount; i++){
+		var input = document.createElement("input");
+		input.setAttribute("type","text");
+		input.setAttribute("name","choice" + i);
+		input.setAttribute("id", "choice" + i);
+		input.setAttribute("value", choice_list[i][1]);
+		document.getElementById("matchingBox").appendChild(input);
+	}
+}
+function inputRemove(choiceCount=0){
+	var input = document.createElement("input");
+	$("#matchingBox").empty();
+}
+
+function choiceSubmit(choiceNum){
+	var rootLog = $("#rootLog").val();
+	requestPython(rootLog, choiceNum);
+}
+
+function questionTitleAdd(question_text){
+	var info = document.getElementById('matchingBox');
+	var divNode = document.createElement('div');
+	divNode.setAttribute("class", "matching_title");
+	var textNode = document.createTextNode(question_text);
+	divNode.appendChild(textNode);
+	info.appendChild(divNode);
+}
+function createChoice(choice_list, choiceCount=0){
+	var radio = document.createElement("div");
+	radio.setAttribute("class","custom-radio");
+	radio.setAttribute("name","choice_radio");
+	radio.setAttribute("id", "choice_radio");
+	radio.setAttribute("align", "left");
+	document.getElementById("matchingBox").appendChild(radio);
+	for(var i = 0; i < choiceCount; i++){
+		choice_label = '<input type="radio" id=choice' + (i+1)  + ' name=choice' + (i+1) +  
+		' value=' + (i+1) + ' onclick=choiceSubmit(' + (i+1) + ')><label for=choice' + (i+1) + 
+		'>' + choice_list[i][1] + '</label><br>';
+		document.getElementById("choice_radio").innerHTML += choice_label;
+	}
+}
+function createResult(result){
+	result_text = '<h1>診断結果</h1><font size=6><p>あなたにおすすめの盆栽は</p></font><b><font size="10">' +
+	 result.name + '</font></b><br><font size=6 color="blue"><a href=/bonsaibook?id=' + result.id + '>詳細へ</a></font';
+	document.getElementById("matchingBox").innerHTML += result_text;
+}
+</script>
 {% endblock %}

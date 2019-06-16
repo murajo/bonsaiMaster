@@ -18,18 +18,37 @@ def matchingView():
 
 @app.route('/matching_post', methods=['POST'])
 def matchingProcess():
-	print(request.json)
-	rootLog = request.json['rootLog']
+	question = ''
+	choice = ''
+	result = ''
+	rootLog = str(request.json['rootLog']) + str(request.json['choice_id'])
 	question_id = matching.matchingRoot(rootLog)
-	question = dbtool.questionGet(question_id)
-	choice = dbtool.choiceGet(question_id)
-	print(question[0][1])
-	return_data = {"rootLog": rootLog, "question_text": question[0][1], "choice_list": choice, "choice_count": len(choice)}
+	if question_id != 0:
+		question = dbtool.questionGet(question_id)
+		choice = dbtool.choiceGet(question_id)
+		return_data = {"rootLog": rootLog, "question_text": question[0][1], "choice_list": choice, "choice_count": len(choice), "result": result}
+	else:
+		result = matching.resultGet(rootLog)
+		return_data = {"rootLog": rootLog, "result": result}
 	return jsonify(ResultSet=json.dumps(return_data))
 
 @app.route('/bonsaibook', methods=['GET','POST'])
 def bonsaibookView():
-	bonsai_data_list = dbtool.bonsaiBookGet()
+	if request.args.get('id'):
+		where = "bonsai_id = " + request.args.get('id')
+		bonsai_data_list = dbtool.bonsaiBookGet(where)
+	elif request.args.get('keyword'):
+		where = "bonsai_name like '%" + request.args.get('keyword') + "%' OR" 
+		where = where + " training_difficulty like '%" + request.args.get("keyword") + "%' OR"
+		where = where + " description like '%" + request.args.get("keyword") + "%' OR"
+		where = where + " cultivate like '%" + request.args.get("keyword") + "%' OR"
+		where = where + " price_range like '%" + request.args.get("keyword") + "%' OR"
+		where = where + " kind like '%" + request.args.get("keyword") + "%' OR"
+		where = where + " season like '%" + request.args.get("keyword") + "%'"
+		print(where)
+		bonsai_data_list = dbtool.bonsaiBookGet(where)
+	else:
+		bonsai_data_list = dbtool.bonsaiBookGet()
 	return render_template('bonsaiBook.html', title="盆栽図鑑", bonsai_list = bonsai_data_list, bonsai_count = len(bonsai_data_list))
 
 
@@ -37,13 +56,9 @@ def bonsaibookView():
 def simulationView():
     return render_template('simulation.html', title='盆栽シュミレーション')
 
-@app.route('/postTest', methods=['GET','POST'])
-def hello():
-    if request.method == 'POST':
-        name = request.form['name']
-    else:
-        name = "no name"
-    return render_template('post.html', name = name)
+@app.route('/request')
+def requestView():
+    return render_template('request.html', title='お問い合わせ')
  
 if __name__ == '__main__':
     app.run()

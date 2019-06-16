@@ -2,14 +2,10 @@
 {% block content %}
 <!-- {{bonsai_list}} -->
 <h2>盆栽図鑑</h2>
-<form method="get" action="#" class="search_container">
-    <input type="text" size="25" placeholder="　キーワード検索">
+<form method="get" action="/bonsaibook" class="search_container">
+    <input id="keyword" name="keyword" type="text" size="25" placeholder="　キーワード検索">
     <input type="submit" value="&#xf002">
 </form>
-<a href="#modal" class="modal">Show</a>
-<div id="modal" style="display:none;">
-    <p>これはサンプルです。</p>
-</div>
 <div class="hidden_box">
     <label for="label1">詳細検索</label>
     <input type="checkbox" id="label1" class="hidden">
@@ -124,7 +120,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6"><img src="../static/images/db/{{bonsai_list[n][11]}}.jpg" width="400px" height="400px"></div>
-                        <div class="col-xs-6 book-border" align="left">       
+                        <div class="col-xs-6 book-border" align="left"><br>    
                             <p><font size="3"><b>育成難易度</b>：{{bonsai_list[n][5]}}</font></p>
                             <p><font size="3"><b>季節</b>：{{bonsai_list[n][10]}}</font></p>
                             <p><font size="3"><b>剪定方法</b>：<br>{{bonsai_list[n][6]}}</font></p>
